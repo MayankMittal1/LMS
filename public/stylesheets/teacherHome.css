@@ -1,0 +1,230 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+nav{
+    color: black;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(17px);
+    position: fixed;
+    box-shadow: 0 -6px 8px -4px rgba(0, 0, 0, 0.6), 0 -6px 20px -4px rgba(0, 0, 0, 0.5);
+}
+.search-box-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    height: 70%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: solid rgba(0, 0, 0, 0.15) 0.2px;
+    padding-left: 20px;
+    transition: all 0.1s ease;
+}
+.search-box{
+    width: 70%;
+    height: 80%;
+    border: none;
+    background-color:transparent;
+}
+.search-box:focus{
+    outline: none;
+}
+.search-box-div:hover{
+    box-shadow: 0 0.75px 1.5px 0 rgba(0, 0, 0, 0.2), 0 1px 7px 0 rgba(0, 0, 0, 0.14);
+}
+.break{
+    height: 65%;
+    width: 2px;
+    background-color: gray;
+}
+.search-button{
+    cursor: pointer;
+    width: 10%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.main-inner{
+    padding-top: 100px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book{
+    width: 90%;
+    height: 200px;
+    border: solid rgba(0, 0, 0, 0.2) 0.2px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+.book-image{
+    width: 20%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+}
+.book-image img{
+    height: 100%;
+}
+
+.book-inner{
+    width: 70%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+.book-info{
+    width: 100%;
+    height: 80%;
+}
+.checkout{
+    width: 80%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+}
+.checkout-btn{
+    display: block;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding: 6px 15px;
+    background-color: #0071e3;
+    border-radius: 5px;
+}
+
+.options-container{
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.option{
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    width: 35%;
+    height: 90%;
+    border-radius: 10px;
+    border: solid rgba(0, 0, 0, 0.3) 0.2px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.option:hover{
+    background-color: rgba(0, 0, 0, 0.07);
+    border: solid rgba(0, 0, 0, 0.09) 0.2px;
+}
+.option-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    height: 90%;
+    padding: 30px;
+}
+.option-right{
+    width: 60%;
+    height: 20%;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.login{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 40vh;
+    width: 400px;
+    background-color: white;
+    z-index: 5;
+    border-radius: 20px;
+    display: none;
+}
+.overlay-main{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.35);
+    backdrop-filter: blur(3px);
+    z-index: 4;
+    display: none;
+}
+.display{
+    display: block;
+}
+.display-form{
+    display: flex !important;
+}
+.form{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.form-inner{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-inner .text-field{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: black;
+}
+.btn{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+.close{
+    color: black;
+    cursor: pointer;
+}

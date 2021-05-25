@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="stylesheets/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald:700|Poppins"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <div class="login">
+        <form action="/student/login" class="form" id="student-login" method="POST">
+            <div class="form-inner">
+                <h3 style="color: black;">Student Login</h3>
+                <input type="text" id="" class="text-field" placeholder="UserId" name="userid" required>
+                <input type="password" name="password" id="" class="text-field" placeholder="Password" name="password" required>
+                <input type="submit" value="Login" class="btn">
+                <a class="close c1">Close</a>
+            </div>
+        </form>
+        <form action="/teacher/login" class="form" id="teacher-login" method="POST">
+            <div class="form-inner">
+                <h3 style="color: black;">Teacher Login</h3>
+                <input type="text" name="uid" id="" class="text-field" placeholder="UserId" required>
+                <input type="password" name="password" id="" class="text-field" placeholder="Password" required>
+                <input type="submit" value="Login" class="btn">
+                <a class="close c2">Close</a>
+            </div>
+        </form>
+    </div>
+    <div class="overlay-main"></div>
+    <section>
+        <div class="container">
+            <h2 class="main-title">A room without books is like a body without a soul.</h2>
+            <img src="images/bg.png" class="bg1" alt="">
+            <img src="images/lady.png" class="girl" alt="" style="z-index: 0;">
+            <img src="images/rock.png" class="rock" alt="" style="z-index: 0;">
+        </div>
+        <div class="content">
+            <div class="content-inner">
+                <div class="login-div" id="stu">
+                    <img src="images/students.jpg" alt="">
+                    <h2>Students' Portal</h2>
+                    <div class="overlay"></div>
+                </div>
+                <div class="login-div" id="tea">
+                    <img src="images/teacher.jpg" alt="">
+                    <h2>Teachers' Portal</h2>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"
+integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ=="
+crossorigin="anonymous"
+></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.js"></script>
+<script src="javascripts/index.js"></script>
+</html>

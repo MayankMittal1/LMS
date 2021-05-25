@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../stylesheets/teacherHome.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald:700|Poppins"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <nav>
+      <div class="nav-title">LMS</div>
+
+      <div class="search-box-div">
+        <input type="text" class="search-box" placeholder="Type Book Name" id="search">
+        <hr class="break">
+        <div class="search-button">
+            <svg width="24" height="24" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 512.005 512.005" style="enable-background:new 0 0 512.005 512.005;" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M505.749,475.587l-145.6-145.6c28.203-34.837,45.184-79.104,45.184-127.317c0-111.744-90.923-202.667-202.667-202.667
+                                S0,90.925,0,202.669s90.923,202.667,202.667,202.667c48.213,0,92.48-16.981,127.317-45.184l145.6,145.6
+                                c4.16,4.16,9.621,6.251,15.083,6.251s10.923-2.091,15.083-6.251C514.091,497.411,514.091,483.928,505.749,475.587z
+                                M202.667,362.669c-88.235,0-160-71.765-160-160s71.765-160,160-160s160,71.765,160,160S290.901,362.669,202.667,362.669z"/>
+                        </g>
+                    </g>
+            </svg>
+        </div>
+    </div>
+
+            
+    <div class="name"><%= user.name %><br><a href="/teacher/logout">Logout</a></div>
+
+    </nav>
+
+  <div class="overlay-main"></div>
+    <section class="main">
+      <div class="main-inner">
+        <% requests.forEach((request)=>{ %>
+          <div class="book">
+            <div class="book-image">
+              <img src="../images/uploads/<%= request.image %> " alt="">
+            </div>
+            <div class="book-inner">
+              <div class="book-info">
+                <h2><%= request.book %></h2>
+                <h3>User- <%= request.name %></h3>
+                <h3>Available Quantity- <%= request.quantity %></h3>
+                <p>Transaction ID- <%= request.id %></p>
+                <p style="color: green;">Status - <%= request.status %> </p>
+                <% if(request.status=="issued"){ %> 
+                  <p style="color: green;">Issue Date - <%= request.issue_date %>  </p>
+                <% }; %> 
+                <% if(request.status=="returned"){ %> 
+                  <p style="color: green;">Return Date - <%= request.return_date %>  </p>
+                <% }; %> 
+              </div>
+              <% if(request.status=="pending"){ %> 
+              <div class="checkout">
+                <a href="/teacher/approve?id=<%= request.id %> " class="checkout-btn">Approve</a>
+                <a href="/teacher/decline?id=<%= request.id %> " class="checkout-btn" style="background-color: red; margin-left: 30px;">Decline</a>
+              </div>
+              <% }; %> 
+            </div>
+          </div>
+          <% }); %>
+      </div>
+    </section>
+</body>
+<script src="../javascripts/search-t.js"></script>
+</html>
