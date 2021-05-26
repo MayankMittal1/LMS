@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
   var requests=undefined
   if(req.session.type=="student" & !req.query.q){
     connection.query(
-      `select * from students where id="${req.session.uid}";`,
+      `select * from students where id=${connection.escape(req.session.uid)};`,
       (error, results, fields) => {
         user=results[0]
       }
@@ -37,12 +37,12 @@ router.get('/', function(req, res, next) {
     var requests=undefined
     var q=req.query.q
     connection.query(
-      `select * from students where id="${req.session.uid}";`,
+      `select * from students where id=${connection.escape(req.session.uid)};`,
           (error, results, fields) => {
               user=results[0]
           }
     );
-    connection.query(`select t.id,t.status,b.name,b.author,b.genre,b.image from transaction t join books b where t.book_id=b.id and t.student_id=${req.session.uid};`,(err,result)=>{
+    connection.query(`select t.id,t.status,b.name,b.author,b.genre,b.image from transaction t join books b where t.book_id=b.id and t.student_id=${connection.escape(req.session.uid)};`,(err,result)=>{
       requests=result
     })
     connection.query(
@@ -67,7 +67,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   connection.query(
-    `select * from students where userid = "${req.body.userid}" and password = "${crypto.createHash('sha256').update(req.body.password).digest('hex')}";`,
+    `select * from students where userid = ${connection.escape(req.body.userid)} and password = "${crypto.createHash('sha256').update(req.body.password).digest('hex')}";`,
     (error, results, fields) => {
       if (error) {
         res.writeHead(500);
@@ -87,14 +87,14 @@ router.post('/login', function(req, res, next) {
 
 router.get('/checkout',(req,res)=>{
   if(req.session.type=="student"){
-    var id=req.query.id
-    var q=`select * from transaction where book_id = ${id} and student_id = ${req.session.uid} and status ="pending";`
+    var id=connection.escape(req.query.id)
+    var q=`select * from transaction where book_id = ${id} and student_id = ${connection.escape(req.session.uid)} and status ="pending";`
     connection.query(q,(err,result)=>{
       if(result.length>0){
         res.redirect('/student')
       }
       else{
-        q=`insert into transaction(book_id,student_id,status) values(${id},${req.session.uid},"pending");`
+        q=`insert into transaction(book_id,student_id,status) values(${id},${connection.escape(req.session.uid)},"pending");`
         connection.query(q,(err,result)=>{
           res.redirect('/student')
         });
@@ -107,7 +107,7 @@ router.get('/checkout',(req,res)=>{
 })
 router.get('/cancel',(req,res)=>{
   if(req.session.type=="student"){
-    var id=req.query.id
+    var id=connection.escape(req.query.id)
     var q=`update transaction set status="cancelled" where id= ${id};`
     connection.query(q,(err,result)=>{
       res.redirect('/student')
